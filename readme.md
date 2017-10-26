@@ -14,5 +14,6 @@
 - [Pictures](./Pictures) 为文档用到的的所有图像文件
 
 ## Usage:
-- OSX下可以直接双击[ generate.command ](./generate.command)来生成`pdf`文件
-- OSX下可以直接双击[ clean_ws.command ](./clean_ws.command)来清理项目临时文件
+- `OSX`下可以直接双击[ generate.command ](./generate.command)来生成`pdf`文件
+- `OSX`下可以直接双击[ clean_ws.command ](./clean_ws.command)来清理项目临时文件
+- `Windows`下双击对应的`bat`文件即可
