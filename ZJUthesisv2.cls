@@ -572,23 +572,41 @@ includehead, includefoot]{geometry}
   \fi
 
 % 设置章节标题格式
+\CTEXsetup[name={第\hspace{0.2em},\hspace{0.2em}章},beforeskip={1em plus .2em minus .2em},afterskip={1em plus .2em minus .2em}]{chapter}
+\CTEXsetup[number={\chinese{chapter}}]{chapter}
+\CTEXsetup[format={\centering}]{chapter}
+\CTEXsetup[nameformat={\bfseries\fangsong\zihao{-3}}]{chapter}
+\CTEXsetup[titleformat={\bfseries\fangsong\zihao{-3}}]{chapter}
+
+\CTEXsetup[format={\noindent}]{section}
+\CTEXsetup[nameformat={\bfseries\zihao{4}}]{section}
+\CTEXsetup[titleformat={\bfseries\fangsong\zihao{4}}]{section}
+
+\CTEXsetup[format={\noindent}]{subsection}
+\CTEXsetup[nameformat={\bfseries\zihao{-4}}]{subsection}
+\CTEXsetup[titleformat={\bfseries\fangsong\zihao{-4}}]{subsection}
+\CTEXsetup[format={\noindent}]{subsubsection}
+\CTEXsetup[nameformat={\bfseries\zihao{-4}}]{subsubsection}
+\CTEXsetup[titleformat={\bfseries\zihao{-4}}]{subsubsection}
 % 此处章节标题前后空白距离采用了默认设置，如需修改请参考ctex参考文档ctex.pdf
 % \ctexset { chapter = { name={,} } }
-\ctexset { chapter = { name={第\hspace{0.2em},\hspace{0.2em}章},beforeskip={1em plus .2em minus .2em},afterskip={1em plus .2em minus .2em} } }
-%\ctexset { chapter = { number={\arabic {chapter}} } }
-\ctexset { chapter = { number={\chinese {chapter}} } }
-\ctexset { chapter = { format={\centering } } }
-\ctexset { chapter = { nameformat={\bfseries \fangsong \zihao {-3}} } }
-\ctexset { chapter = { titleformat={\bfseries \fangsong \zihao {-3}} } }
-\ctexset { section = { format={\noindent } } }
-\ctexset { section = { nameformat={\bfseries \zihao {4}} } }
-\ctexset { section = { titleformat={\bfseries \fangsong \zihao {4}} } }
-\ctexset { subsection = { format={\noindent } } }
-\ctexset { subsection = { nameformat={\bfseries \zihao {-4}} } }
-\ctexset { subsection = { titleformat={\bfseries \fangsong \zihao{-4}} } }
-\ctexset { subsubsection = { format={\noindent } } }
-\ctexset { subsubsection = { nameformat={\bfseries \zihao {-4}} } }
-\ctexset { subsubsection = { titleformat={\bfseries \zihao {-4}} } }
+%\ctexset { chapter = { name={第\hspace{0.2em},\hspace{0.2em}章},beforeskip={1em plus .2em minus .2em},afterskip={1em plus .2em minus .2em} } }
+%%\ctexset { chapter = { number={\arabic {chapter}} } }
+%\ctexset { chapter = { number={\chinese {chapter}} } }
+%\ctexset { chapter = { format={\centering } } }
+%\ctexset { chapter = { nameformat={\bfseries \fangsong \zihao {-3}} } }
+%\ctexset { chapter = { titleformat={\bfseries \fangsong \zihao {-3}} } }
+
+%\ctexset { section = { format={\noindent } } }
+%\ctexset { section = { nameformat={\bfseries \zihao {4}} } }
+%\ctexset { section = { titleformat={\bfseries \fangsong \zihao {4}} } }
+
+%\ctexset { subsection = { format={\noindent } } }
+%\ctexset { subsection = { nameformat={\bfseries \zihao {-4}} } }
+%\ctexset { subsection = { titleformat={\bfseries \fangsong \zihao{-4}} } }
+%\ctexset { subsubsection = { format={\noindent } } }
+%\ctexset { subsubsection = { nameformat={\bfseries \zihao {-4}} } }
+%\ctexset { subsubsection = { titleformat={\bfseries \zihao {-4}} } }
 
 % 正文部分文字的行距设置
 \linespread{1.5}
