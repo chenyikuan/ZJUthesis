@@ -6,4 +6,9 @@
 *.pdf
 *.synctex.gz
 *.toc
+*.bbl
+*.blg
+*.ilg
+*.ind
+*.html
 Chapters/*.aux
