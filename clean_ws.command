@@ -7,7 +7,7 @@ cd "$(dirname "$BASH_SOURCE")" || {
 #     exit 1
 # }
 # echo ${mydir}
-tex_name=cyk1
+tex_name=main
 
 rm ${tex_name}.aux
 rm ${tex_name}.idx

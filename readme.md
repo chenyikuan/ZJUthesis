@@ -1,7 +1,12 @@
 # TEX for BS
 
 ---
+- 用UTF8格式，OSX下测试OK，Win下未知
+- 不知道为什么，需要两次`Command+T`才能生成目录，初学不懂，请多指教
+
+---
 ## Contents:
+
 
 - [cyk1.tex](./cyk1.tex) 为文档的主要结构框架文件
 - [ZJUthesisv2.cls](./ZJUthesisv2.cls) 为文档的主要语法文件，包括字体字号格式等
