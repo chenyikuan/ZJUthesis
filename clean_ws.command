@@ -25,5 +25,6 @@ rm ${tex_name}.ind
 rm readme.html
 
 rm Chapters/*.aux
+rm cyk_chapters/*.aux
 
 # sleep 10

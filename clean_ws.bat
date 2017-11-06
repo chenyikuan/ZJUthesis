@@ -15,7 +15,10 @@ del %tex_name%.ind
 
 del readme.html
 
-cd Chapters
+cd cyk_chapters
+del *.aux
+
+cd ../Chapters
 del *.aux
 
 pause
