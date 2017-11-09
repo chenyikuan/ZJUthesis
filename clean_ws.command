@@ -21,6 +21,7 @@ rm ${tex_name}.bbl
 rm ${tex_name}.blg
 rm ${tex_name}.ilg
 rm ${tex_name}.ind
+rm ${tex_name}.xdv
 
 rm readme.html
 
