@@ -274,29 +274,29 @@ includehead, includefoot]{geometry}
       \begin{tabular}{rl}
         {\bfseries\fangsong\zihao{3}\ZJU@label@title:} 
         &
-        \bfseries\fangsong\zihao{-2} \ZJUunderline[300pt]{\ZJU@value@title} \\[3mm]
+        \bfseries\fangsong\zihao{-2} \ZJUunderline[350pt]{\ZJU@value@title} \\[3mm]
         &
         % 这个地方是做第二行标题的判断，如果标题一行写不下，有第二行则显示，否则不显示
         \ifx\ZJU@value@titletl\undefined
           \hfil
         \else
-          {\bfseries\fangsong\zihao{-2}\ZJUunderline[300pt]{\ZJU@value@titletl}}
+          {\bfseries\fangsong\zihao{-2}\ZJUunderline[350pt]{\ZJU@value@titletl}}
         \fi \\[4mm]
         {\bfseries\fangsong\zihao{3}\ZJU@label@Etitle:} 
         &
-        {\bf\zihao{-3}\ZJUunderline[300pt]{\ZJU@value@Etitle}}\\[3mm]
+        {\bf\zihao{-3}\ZJUunderline[350pt]{\ZJU@value@Etitle}}\\[3mm]
         &
         %同样是英文标题的多行判断，如果一行写不下，有第二行显示，否则不显示第二行
         \ifx\ZJU@value@Etitletl\undefined
           \hfil
         \else
-          {\bf\zihao{-3}\ZJUunderline[300pt]{\ZJU@value@Etitletl}}
+          {\bf\zihao{-3}\ZJUunderline[350pt]{\ZJU@value@Etitletl}}
         \fi\\[2mm]
         &
         \ifx\ZJU@value@EtitletB\undefined
           \hfil
         \else
-          {\bf\zihao{-3}\ZJUunderline[300pt]{\ZJU@value@EtitletB}}
+          {\bf\zihao{-3}\ZJUunderline[350pt]{\ZJU@value@EtitletB}}
         \fi\\
       \end{tabular}
 
