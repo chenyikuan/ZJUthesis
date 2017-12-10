@@ -1,8 +1,85 @@
-\chapter{cyk测试章节}
+\chapter{语法测试章节}
 
 本章主要介绍仿真环境的搭建
 
 \section{仿真环境搭建}
+
+\begin{lstlisting}[language={[ANSI]C}] 
+int main(int argc, char ** argv) 
+{ 
+printf("Hello world! \n"); 
+return 0; 
+} 
+\end{lstlisting}
+
+\begin{algorithm}
+\caption{A test algorithm (Part I)}
+\begin{algorithmic}[1]
+\Require <hahdsfasdfadf>
+\Ensure <hahdsfasdfadf>
+\State <hahdsfasdfadf>
+\If{<condition>}
+	\State <hahdsfasdfadf>
+\ElsIf{<condition>}
+	\State <hahdsfasdfadf>
+\Else 
+	\State <hahdsfasdfadf>
+\EndIf
+\For{<condition>}
+	\State <hahdsfasdfadf>
+\EndFor
+\ForAll{<condition>}
+	\State <hahdsfasdfadf>
+\EndFor
+\While{<condition>}
+	\State <hahdsfasdfadf>
+\EndWhile
+\Repeat
+	\State <hahdsfasdfadf>
+\Until{<condition>}
+\Loop
+	\State <hahdsfasdfadf>
+\EndLoop
+    \algstore{bkbreak}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption*{A test algorithm (Part II)}
+\begin{algorithmic}[1]
+\algrestore{bkbreak}
+\Function{<name>}{<params>} <body> \EndFunction
+\State \Return <hahdsfasdfadf>
+\Comment{<comment>}
+\Procedure {BellmanKalaba}{$G$, $u$, $l$, $p$}
+\ForAll {$v \in V(G)$}
+\State $l(v) \leftarrow \infty$
+\EndFor
+\State $p(i) \leftarrow v_j$
+\State $l’(i) \leftarrow min$
+\State $changed \leftarrow l \not= l’$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+% \begin{algorithm}[H]
+% \caption{How to write algorithms}
+% \KwIn{this text}
+% \KwOut{how to write algorithm with \LaTeX2e }
+% initialization\;
+% \While{not at end of this document}{
+%     read current\;
+%     \eIf{understand}{
+%         go to next section\;
+%         current section becomes this one\;
+%     }{
+%         go back to the beginning of current section\;
+%     }
+% }
+% \end{algorithm}
+
+空行：
+\newline
 
 随机蕨最早由他[\citenum{ozuysal2007fast}]提出\cite{ozuysal2007fast}。
 
