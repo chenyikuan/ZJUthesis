@@ -147,7 +147,104 @@
 
 图图图图
 
-这些情况下，在实验中会发现上节所述的随机蕨回归算法会遇到一个拟合能力严重不足的问题。例如存在一个输入样本特征描述$F=\{f_1,f_2,...,f_N\}$，其中有部分特征被噪声严重干扰，或者数据缺失，记为$F=\{f_1,f_2,...f_p,f’_{p+1},...,f’_N\}$。其中$p+1$到$N$维特征为被噪声严重干扰的部分。这里注意随机蕨回归算法由于在选择特征维度的过程是完全随机的，不同样本也会有不同的被污染维度，而被噪声严重干扰的特征维度在该特征中的位置对算法的影响是无关的，因此可以将这些被噪声严重干扰的维度置于最后方便后文阐述。当特征存在上述被干扰的时候，从随机蕨算法中可以很容易看出，随机蕨算法存在两个缺陷。第一是当训练数据被干扰时，随机蕨回归模型在训练的过程中会尽量避免这些被污染的特征维度，因为一旦在随机过程中这些特征被
+这些情况下，在实验中会发现上节所述的随机蕨回归算法会遇到一个拟合能力严重不足的问题。例如存在一个输入样本特征描述$F=\{f_1,f_2,...,f_N\}$，其中有部分特征被噪声严重干扰，或者数据缺失，记为:
+\begin{equation}
+F=\{f_1,f_2,...f_p,f’_{p+1},...,f’_N\}
+\end{equation}
+其中$p+1$到$N$维特征为被噪声严重干扰的部分。这里注意随机蕨回归算法由于在选择特征维度的过程是完全随机的，不同样本也会有不同的被污染维度。例如在某一个样本中，前10个维度的特征被污染了，但是在另一个样本中后10个维度的特征被污染了，又或者在其他样本中完全随机的某些维度被污染。但由于随机蕨算法中，每个基础蕨进行比较的那些维度（$dims$）是完全随机生成的，因此为了方便后文阐述，上式中对于某一个样本，可以将被噪声严重污染的维度置于公式后方。
+
+当特征存在上述被干扰情况的时候，从随机蕨算法中可以很容易看出，随机蕨算法存在两个缺陷。第一是当训练数据被干扰时，随机蕨回归模型在训练的过程中会尽量避免这些被污染的特征维度，因为一旦在随机过程中这些特征被选中，被污染的数据将会有错误的分类，并在最后分类均值的计算中严重干扰最后结果，最终导致整个随机蕨回归能力大大下降。第二是当随机蕨回归模型在训练的过程中并没有遇到严重的特征干扰问题，但是在实际应用过程中特征被大量污染以及干扰。这个时候被污染的特征维度直接导致样本的分类结果出现严重的偏差，就会导致最后的回归结果出现完全不在预期内的错误结果。
+
+假设特征的被污染情况是可以被预测的，并且事实上在很多情况下这个假设是成立的，并且可以背很精确的估计。也就是说存在如下表达：
+\begin{equation}
+	B=\{b_1,b_2,...b_p,b_{p+1},...,b_N\}\in[0,1]
+\end{equation}
+其中$B$和$F$具有完全一致的维度，表示$F$的各个维度的置信度，也就是当$F$中某一维度的特征$F_i$被污染了的时候，对应的$B_i$将从百分之百可信度变为零（从1到0）。在上面的公式中，假定第$1$到第$p$维都是未被污染的维度，第$p+1$到第$N$维都是被污染的维度，则有：
+\begin{equation}
+b_i=
+\begin{cases}
+1\quad {0\leq i\leq p} \\
+0\quad {p<i\leq N}
+\end{cases}
+\end{equation}
+$B$可以称为特征$F$的可信度掩码。在这个假设成立的情况下，我们可以充分利用这个信息来调整随机蕨回归算法。由于随机蕨算法中的每一个基础蕨都会根据出入特征的某几个维度进行回归，每个基础蕨在进行实际的回归之前可以先进行判断。如果该基础随机蕨要参考的那几个特征维度的可信度掩码值较低，则需要对这个随机蕨的回归量进行抑制，而当基础随机蕨参考的特征维度的可信度掩码值较高的时候，则对这个基础蕨的回归量不做调整。在算法实现过程中，特征维度的可信度掩码可以作为每个随机蕨的权值添加进算法中，也就是每个基础蕨的回归量应有如下表达：
+\begin{equation}
+	Reg_{fern}^{new} = Reg_{fern}^{original}\cdot f(B)
+\end{equation}
+其中$f(B)$为由可信度掩码生成的权值函数，在简单应用中，$f(B)$可以有简单的表达：
+\begin{equation}
+\begin{aligned}
+	Q(i)=
+	\begin{cases}
+		1\quad i\in dims \\
+		0\quad i\not\in dims
+	\end{cases} \\
+	f(B)=\frac{\sum_{i\in dims} b_i}{\sum_{i=0}^{N} Q(i)}
+\end{aligned}
+\end{equation}
+在有了权值调整之后，当某一个基础蕨进行特征维度和阈值的比较时，会同时对可信度掩码进行处理。一旦输入的样本特征有较低的可行度时，$f(B)$将得到一个较低的值，从而抑制住这个基础蕨的回归量，避免杂乱的回归量对最后结果有较大的影响。并且这样处理仍然能让所有的维度都得到均匀的训练，不然被污染的维度会由于训练时$Loss$下降过少而被训练器忽略。同时在回归应用的时候，被污染的特征维度也会被抑制，保证最后回归结果不会因为某几个特征维度的干扰而破坏。
+
+最后下面的伪代码为增加掩码机制的随机蕨算法的整体概要:
+% \newline
+
+\begin{algorithm}
+\caption{掩码机制下的随机蕨回归算法————训练模型 (Part I)}
+\begin{algorithmic}[1]
+\Require $D(data), L(label), B(belief\ mask)$
+\Require $S(depth), M(number\ of\ ferns), R(repeat\ times), eta(learning\ rate)$
+\Ensure 随机蕨回归模型
+\State 初始化：输入数据归一化等预处理；
+\For{$M\ times$}
+\Comment{随机蕨层数}
+	\State $Loss_{min}\leftarrow MAX$
+	\For{$R\ times$}
+	\Comment{每层随机蕨重复随机过程次数}
+		\State 随机产生S个维度与S个阈值：$dims, thresholds$
+		\State $binary\ code=Compare(dims(D), thresholds)$
+		\State \Comment 得到该基础蕨下所有训练样本的分类索引值
+		\State $f(B)=\frac{\sum_{i\in dims} b_i}{\sum_{i=0}^{N} Q(i)}$
+		\State \Comment 根据该基础蕨所选特征的置信度计算该基础蕨的回归量权值
+		\State 计算所有类内均值：$means$
+		\State $Y_{pred_i}=means(binary\ code)$
+		\State $Y_{new}=Y_{original}-f(B)\cdot \sum_{i=0}^{m-1} Y_{pred_i}\cdot eta$
+		\State \Comment 使用本次训练得到的基础蕨的回归结果结合学习率以及权值更新回归目标
+		\State $Loss=\sum_i{\|Y_{new,i}-\overline{L_i}\|}$
+		\State \Comment 计算$Loss$
+		\If{$Loss<Loss_{min}$}
+			\State 记录该基础蕨作为最佳基础蕨
+			\State 保存该基础蕨的随机过程结果以及该随机过程下的训练样本分类均值
+		\Else 
+			\State $continue$
+		\EndIf
+	\State $\hat{Y}_{new}=\hat{Y}_{original}-\hat{f}(B)\cdot \sum_{i=0}^{m-1} \hat{Y}_{pred_i}\cdot eta$
+	\State \Comment 使用最佳基础蕨的回归结果结合学习率以及权值更新回归目标
+	\EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{掩码机制下的随机蕨回归算法————应用模型}
+\begin{algorithmic}[1]
+\Require $D(data), B(belief\ mask)$，随机蕨回归模型
+\Ensure $L(label)$
+\State $Reg\leftarrow 0$
+\Comment 初始化回归值
+\For{$M\ times$}
+\Comment{随机蕨层数}
+	\State $binary\ code_m=Compare(dims_m(D), thresholds_m)$
+	\Comment 得到本层基础随机蕨分类索引
+	\State $reg_m=Indexing_m(binary\ code_m)$
+	\Comment 得到本层基础随机蕨的回归值
+	\State $Reg=Reg+reg_m$
+	\Comment 将本次回归值累计到总回归值中去
+\EndFor
+\State \Return $Reg$
+\end{algorithmic}
+\end{algorithm}
+
+
+
 
 \section{实验结果与分析} % 人脸回归可以在这里写
 
