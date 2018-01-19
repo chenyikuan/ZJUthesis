@@ -19,31 +19,6 @@
 \hb@xt@\@tempdima{\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb}
 \makeatother
 
-%\usepackage[sectionbib]{chapterbib}
-
-% \makeatletter
-% \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-%   \if@mainmatter
-%     \refstepcounter{chapter}%
-%     \typeout{\@chapapp\space\thechapter.}%
-%     \addcontentsline{toc}{chapter}%
-%     {\protect\numberline{第 \chaptername 章}\hspace{1em}#1}
-% %    {\protect\numberline{\chaptername}\hspace{4em}#1}
-%   \else
-%     \addcontentsline{toc}{chapter}{#1}%
-%   \fi
-%   \else
-%   \addcontentsline{toc}{chapter}{#1}%
-%   \fi
-%   \chaptermark{#1}%
-%   \if@twocolumn
-%   \@topnewpage[\@makechapterhead{#2}]%
-%   \else
-%   \@makechapterhead{#2}%
-% \@afterheading
-% \fi}
-% \makeatother
-
 \usepackage{enumitem}
 % \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{caption}
@@ -111,11 +86,11 @@
 \institute{控制科学与工程学院}
 
 %论文提交日期
-\submitdate{2015年4月8日}
+\submitdate{2018年1月10日}
 
 % 答辨日期
-\defenddate{2015年6月12日}
-\defenddateE{June 12th, 2015}
+\defenddate{2018年3月20日}
+\defenddateE{March 20th, 2018}
 
 % 生成封面
 \makeCoverPage
@@ -125,21 +100,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 论文评阅人信息 注意两字名与三字名，两字职称与三字职称的写法，便于对齐
 % 多余的名额直接注释掉即可，比如三个评阅人，把评阅人D，E注释掉即可
-\reviewersA{丘处机\hspace{1.5em}真人\hspace{1.5em}登州滨都宫\hspace{1em}}
-\reviewersB{葛\quad 洪\hspace{1.5em}方士\hspace{1.5em}罗浮山道观\hspace{1em}}
-\reviewersC{寇谦之\hspace{1.5em}天师\hspace{1.5em}嵩山中岳道场}
-\reviewersD{张三丰\hspace{1.5em}真君\hspace{1.5em}武当玉虚宫\hspace{1em}}
-\reviewersE{孙玄清\hspace{1.5em}真人\hspace{1.5em}崂山明霞洞\hspace{1em}}
+% \reviewersA{丘处机\hspace{1.5em}真人\hspace{1.5em}登州滨都宫\hspace{1em}}
+% \reviewersB{葛\quad 洪\hspace{1.5em}方士\hspace{1.5em}罗浮山道观\hspace{1em}}
+% \reviewersC{寇谦之\hspace{1.5em}天师\hspace{1.5em}嵩山中岳道场}
+% \reviewersD{张三丰\hspace{1.5em}真君\hspace{1.5em}武当玉虚宫\hspace{1em}}
+% \reviewersE{孙玄清\hspace{1.5em}真人\hspace{1.5em}崂山明霞洞\hspace{1em}}
+\reviewersA{}
+\reviewersB{}
+\reviewersC{}
+\reviewersD{}
+\reviewersE{}
 
 % 答辩委员会信息，如果某一个单位比较长，
 % 请在其它较短后面补上{hspace{Xem}}，X是比最长的单位名少几个字
 % 如果实际人数少于6人，多余的注释掉即可
-\chairman{唐三藏\hspace{1.5em}功佛\hspace{1.5em}洛阳大慈恩寺}
-\commissionerA{惠\quad 能\hspace{1.5em}方丈\hspace{1.5em}曹溪宝林寺\hspace{1em}}
-\commissionerB{智\quad 顗\hspace{1.5em}方丈\hspace{1.5em}天台山国清寺}
-\commissionerC{法\quad 藏\quad 大和尚\quad 洛阳佛授记寺}
-\commissionerD{道\quad 济\hspace{1.5em}和尚\hspace{1.5em}临安灵隐寺\hspace{1em}}
-\commissionerE{降\quad 龙\hspace{1.5em}尊者\hspace{1.5em}天竺大雷音寺}
+% \chairman{唐三藏\hspace{1.5em}功佛\hspace{1.5em}洛阳大慈恩寺}
+% \commissionerA{惠\quad 能\hspace{1.5em}方丈\hspace{1.5em}曹溪宝林寺\hspace{1em}}
+% \commissionerB{智\quad 顗\hspace{1.5em}方丈\hspace{1.5em}天台山国清寺}
+% \commissionerC{法\quad 藏\quad 大和尚\quad 洛阳佛授记寺}
+% \commissionerD{道\quad 济\hspace{1.5em}和尚\hspace{1.5em}临安灵隐寺\hspace{1em}}
+% \commissionerE{降\quad 龙\hspace{1.5em}尊者\hspace{1.5em}天竺大雷音寺}
+\chairman{}
+\commissionerA{}
+\commissionerB{}
+\commissionerC{}
+\commissionerD{}
+\commissionerE{}
 
 % 生成中文题名页
 \maketitle
@@ -162,19 +148,30 @@
 % \englishtitletl{The Second Edition}
 
 % 评阅人信息，名字，职称，单位尽量用简写，否则会写不下
-\EreviewersA{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EreviewersB{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EreviewersC{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EreviewersD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EreviewersE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EreviewersA{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EreviewersB{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EreviewersC{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EreviewersD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EreviewersE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EreviewersA{}
+\EreviewersB{}
+\EreviewersC{}
+\EreviewersD{}
+\EreviewersE{}
 
 % 答辩委员会信息，同样尽量用简写，否则会写不下
-\Echairman{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EcommissionerA{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EcommissionerB{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EcommissionerC{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EcommissionerD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
-\EcommissionerE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \Echairman{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EcommissionerA{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EcommissionerB{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EcommissionerC{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EcommissionerD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+% \EcommissionerE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\Echairman{}
+\EcommissionerA{}
+\EcommissionerB{}
+\EcommissionerC{}
+\EcommissionerD{}
+\EcommissionerE{}
 
 % 生成英文封面
 \makeenglishtitle
@@ -204,7 +201,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 致谢页
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{./Chapters/thanks}
+% \include{./Chapters/thanks}
+\include{./cyk_chapters/thanks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 序言页
@@ -254,7 +252,7 @@
 \include{./cyk_chapters/chap4}
 \include{./cyk_chapters/chap5}
 
-\include{./cyk_chapters/test}
+% \include{./cyk_chapters/test}
 
 \ZJUbackmatter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
